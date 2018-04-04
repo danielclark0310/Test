@@ -36,6 +36,12 @@
                 console.log("Back");
                 console.log(document.display.textview.value);
             }
+            function store(){
+                equal();
+                console.log("Store");
+                document.display.textview.value
+                document.storagedisplay.storeview.value = document.display.textview.value;
+            }
         </script>
         <style>
             *{
@@ -77,6 +83,19 @@
                 background: #b1ffff;
                 color:#505050;
             }
+            .storeview{
+                width:217;
+                margin:5;
+                font-size:20;
+                padding:5;
+                border:5;
+                background:#884e75;
+                color:#e8d9d9;
+                position:absolute;
+                top:38%;
+                left:16%;
+                transform:translateX(-50%) translateY(-50%);
+            }
             .main{
                 position:absolute;
                 top:50%;
@@ -93,12 +112,15 @@
     <body>
         <div class="bg">
             <div>
-                <input class="store" type="button" value="Store">
+                <input class="store" type="button" value="Store" onclick="store()">
+                <form name="storagedisplay">
+                    <input class="storeview" name="storeview" value="">
+                </form>
             </div>
         </div>
         <div class="main">
             <form name="display">
-                <input class="textview" name="textview" value="0">
+                <input class="textview" name="textview" value="0" disabled="disabled">
             </form>
             <table>
                 <tr>
