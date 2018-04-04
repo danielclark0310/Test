@@ -6,7 +6,7 @@
                 if(document.display.textview.value == "0"){
                     document.display.textview.value = num;
                 } 
-                else {
+                else{
                     document.display.textview.value = document.display.textview.value+num;
                 } 
                 console.log(num);
@@ -27,7 +27,12 @@
             }
             function back(){
                 var exp = document.display.textview.value;
-                document.display.textview.value = exp.substring(0,exp.length-1);
+                if(exp.length == 1){
+                    document.display.textview.value = "0";
+                }
+                else {
+                    document.display.textview.value = exp.substring(0,exp.length-1);  
+                }
                 console.log("Back");
                 console.log(document.display.textview.value);
             }
