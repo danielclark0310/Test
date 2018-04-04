@@ -37,6 +37,10 @@
                 console.log("Back");
                 console.log(document.display.textview.value);
             }
+            function revertmem(){
+                memory = 0;
+                document.getElementById("memory").innerHTML = memory;
+            }
             function store(){ 
                 if(memory > 0){
                     equal();
@@ -52,8 +56,24 @@
                     document.storagedisplay.store_1.value = document.display.textview.value;
                 }
                 else {
-                    memory = "FULL";
+                    memory = "EMPTY";
                     document.getElementById("memory").innerHTML = memory;
+                    setTimeout(revertmem, 1000);
+                }
+            }
+            function clearmem(){ 
+                if(memory < 7){
+                    equal();
+                    memory++;
+                    document.getElementById("memory").innerHTML = memory;
+                    console.log("Store");
+                    document.storagedisplay.store_1.value = document.storagedisplay.store_2.value;
+                    document.storagedisplay.store_2.value = document.storagedisplay.store_3.value;
+                    document.storagedisplay.store_3.value = document.storagedisplay.store_4.value;
+                    document.storagedisplay.store_4.value = document.storagedisplay.store_5.value;
+                    document.storagedisplay.store_5.value = document.storagedisplay.store_6.value;
+                    document.storagedisplay.store_6.value = document.storagedisplay.store_7.value;
+                    document.storagedisplay.store_7.value = "";
                 }
             }
         </script>
@@ -75,7 +95,7 @@
             }
             .store{
                 -webkit-appearance:none;
-                width:100;
+                width:106;
                 height:30;
                 font-size:20;
                 margin:2;
@@ -85,7 +105,22 @@
                 color: #da9ec7;
                 position:absolute;
                 top:34.8%;
-                left:16%;
+                left:9%;
+                transform:translateX(-50%) translateY(-50%);
+            }
+            .clearmem{
+                -webkit-appearance:none;
+                width:106;
+                height:30;
+                font-size:20;
+                margin:2;
+                cursor:pointer;
+                background:#4c4441;
+                border:none;
+                color: #da9ec7;
+                position:absolute;
+                top:34.8%;
+                left:23.6%;
                 transform:translateX(-50%) translateY(-50%);
             }
             .textview{
@@ -131,6 +166,7 @@
         <div class="bg">
             <div>
                 <input class="store" type="button" value="Store" onclick="store()">
+                <input class="clearmem" type="button" value="Clear" onclick="clearmem()">
                 <form name="storagedisplay">
                     <input class="storeview" name="store_1" value="" disabled="disabled" style="position:absolute;top:38%;left:16%;transform:translateX(-50%) translateY(-50%);">
                     <input class="storeview" name="store_2" value="" disabled="disabled" style="position:absolute;top:42%;left:16%;transform:translateX(-50%) translateY(-50%);">
