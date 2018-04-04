@@ -3,7 +3,6 @@
         <title>Dan's Calculator</title>
         <script>
             function insert(num){
-
                 document.display.textview.value = document.display.textview.value+num;
                 console.log(document.display.textview.value);
             }
@@ -11,14 +10,17 @@
                 var exp = document.display.textview.value;
                 if(exp){
                     document.display.textview.value = eval(exp);
+                    console.log("Equals");
                 }
             }
             function clean(){
                 document.display.textview.value="0";
+                console.log("Clear");
             }
             function back(){
                 var exp = document.display.textview.value;
                 document.display.textview.value = exp.substring(0,exp.length-1);
+                console.log(document.display.textview.value);
             }
         </script>
         <style>
