@@ -1,7 +1,8 @@
 <html>
     <head>
         <title>Dan's Calculator</title>
-        <script>        
+        <script>
+            var memory = 7;
             function insert(num){
                 if(document.display.textview.value == "0"){
                     document.display.textview.value = num;
@@ -36,11 +37,24 @@
                 console.log("Back");
                 console.log(document.display.textview.value);
             }
-            function store(){
-                equal();
-                console.log("Store");
-                document.display.textview.value
-                document.storagedisplay.storeview.value = document.display.textview.value;
+            function store(){ 
+                if(memory > 0){
+                    equal();
+                    memory--;
+                    document.getElementById("memory").innerHTML = memory;
+                    console.log("Store");  
+                    document.storagedisplay.store_7.value = document.storagedisplay.store_6.value;
+                    document.storagedisplay.store_6.value = document.storagedisplay.store_5.value;
+                    document.storagedisplay.store_5.value = document.storagedisplay.store_4.value;
+                    document.storagedisplay.store_4.value = document.storagedisplay.store_3.value;
+                    document.storagedisplay.store_3.value = document.storagedisplay.store_2.value;
+                    document.storagedisplay.store_2.value = document.storagedisplay.store_1.value;
+                    document.storagedisplay.store_1.value = document.display.textview.value;
+                }
+                else {
+                    memory = "FULL";
+                    document.getElementById("memory").innerHTML = memory;
+                }
             }
         </script>
         <style>
@@ -91,10 +105,6 @@
                 border:5;
                 background:#884e75;
                 color:#e8d9d9;
-                position:absolute;
-                top:38%;
-                left:16%;
-                transform:translateX(-50%) translateY(-50%);
             }
             .main{
                 position:absolute;
@@ -107,6 +117,14 @@
                 background:linear-gradient(to right, #dad4d4, #cccccc);
                 height:100%;
             }
+            .memory{
+                font-size:20;
+                font-family: monospace;
+                position:absolute;
+                top:66%;
+                left:7%;
+                transform:translateX(-50%) translateY(-50%);
+            }
         </style>
     </head>
     <body>
@@ -114,7 +132,14 @@
             <div>
                 <input class="store" type="button" value="Store" onclick="store()">
                 <form name="storagedisplay">
-                    <input class="storeview" name="storeview" value="">
+                    <input class="storeview" name="store_1" value="" disabled="disabled" style="position:absolute;top:38%;left:16%;transform:translateX(-50%) translateY(-50%);">
+                    <input class="storeview" name="store_2" value="" disabled="disabled" style="position:absolute;top:42%;left:16%;transform:translateX(-50%) translateY(-50%);">
+                    <input class="storeview" name="store_3" value="" disabled="disabled" style="position:absolute;top:46%;left:16%;transform:translateX(-50%) translateY(-50%);">
+                    <input class="storeview" name="store_4" value="" disabled="disabled" style="position:absolute;top:50%;left:16%;transform:translateX(-50%) translateY(-50%);">
+                    <input class="storeview" name="store_5" value="" disabled="disabled" style="position:absolute;top:54%;left:16%;transform:translateX(-50%) translateY(-50%);">
+                    <input class="storeview" name="store_6" value="" disabled="disabled" style="position:absolute;top:58%;left:16%;transform:translateX(-50%) translateY(-50%);">           <input class="storeview" name="store_7" value="" disabled="disabled" style="position:absolute;top:62%;left:16%;transform:translateX(-50%) translateY(-50%);">
+                    <p class="memory" >Memory:</p>
+                    <p class="memory" id="memory" style="top:66%;left:17%">7</p>
                 </form>
             </div>
         </div>
