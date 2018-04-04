@@ -3,7 +3,9 @@
         <title>Dan's Calculator</title>
         <script>
             function insert(num){
+
                 document.display.textview.value = document.display.textview.value+num;
+                console.log(document.display.textview.value);
             }
             function equal(){
                 var exp = document.display.textview.value;
