@@ -103,10 +103,6 @@
                 background:#4c4441;
                 border:none;
                 color: #da9ec7;
-                position:absolute;
-                top:34.8%;
-                left:9%;
-                transform:translateX(-50%) translateY(-50%);
             }
             .clearmem{
                 -webkit-appearance:none;
@@ -118,10 +114,7 @@
                 background:#4c4441;
                 border:none;
                 color: #da9ec7;
-                position:absolute;
-                top:34.8%;
-                left:23.6%;
-                transform:translateX(-50%) translateY(-50%);
+                );
             }
             .textview{
                 width:217;
@@ -134,19 +127,31 @@
             }
             .storeview{
                 width:217;
-                margin:5;
+                margin:2;
                 font-size:20;
                 padding:5;
                 border:5;
                 background:#884e75;
                 color:#e8d9d9;
             }
+            .storage{
+                overflow:scroll;
+                position:absolute;
+                top:50%;
+                left:20%;
+                transform:translateX(-50%) translateY(-50%);
+                background-color:#888484;
+                padding:2px;
+                margin:1px;
+            }
             .main{
+                overflow:scroll;
                 position:absolute;
                 top:50%;
                 left:50%;
                 transform:translateX(-50%) translateY(-50%);
                 background-color:black;
+                display:block;
             }
             .bg{
                 background:linear-gradient(to right, #dad4d4, #cccccc);
@@ -155,28 +160,45 @@
             .memory{
                 font-size:20;
                 font-family: monospace;
-                position:absolute;
-                top:66%;
-                left:7%;
-                transform:translateX(-50%) translateY(-50%);
             }
         </style>
     </head>
     <body>
         <div class="bg">
-            <div>
-                <input class="store" type="button" value="Store" onclick="store()">
-                <input class="clearmem" type="button" value="Clear" onclick="clearmem()">
-                <form name="storagedisplay">
-                    <input class="storeview" name="store_1" value="" disabled="disabled" style="position:absolute;top:38%;left:16%;transform:translateX(-50%) translateY(-50%);">
-                    <input class="storeview" name="store_2" value="" disabled="disabled" style="position:absolute;top:42%;left:16%;transform:translateX(-50%) translateY(-50%);">
-                    <input class="storeview" name="store_3" value="" disabled="disabled" style="position:absolute;top:46%;left:16%;transform:translateX(-50%) translateY(-50%);">
-                    <input class="storeview" name="store_4" value="" disabled="disabled" style="position:absolute;top:50%;left:16%;transform:translateX(-50%) translateY(-50%);">
-                    <input class="storeview" name="store_5" value="" disabled="disabled" style="position:absolute;top:54%;left:16%;transform:translateX(-50%) translateY(-50%);">
-                    <input class="storeview" name="store_6" value="" disabled="disabled" style="position:absolute;top:58%;left:16%;transform:translateX(-50%) translateY(-50%);">           <input class="storeview" name="store_7" value="" disabled="disabled" style="position:absolute;top:62%;left:16%;transform:translateX(-50%) translateY(-50%);">
-                    <p class="memory" >Memory:</p>
-                    <p class="memory" id="memory" style="top:66%;left:17%">7</p>
-                </form>
+            <div class="storage">
+                <table style="border-collapse:0;">
+                    <form name="storagedisplay">
+                        <tr>
+                            <td><input class="store" type="button" value="Store" onclick="store()"></td>
+                            <td><input class="clearmem" type="button" value="Clear" onclick="clearmem()"></td>
+                        </tr>
+                        <tr>
+                            <td colspan=2><input class="storeview" name="store_1" value="" disabled="disabled"></td>
+                        </tr>
+                        <tr>
+                            <td colspan=2><input class="storeview" name="store_2" value="" disabled="disabled"></td>
+                        </tr>
+                        <tr>
+                            <td colspan=2><input class="storeview" name="store_3" value="" disabled="disabled"></td>
+                        </tr>
+                        <tr>
+                            <td colspan=2><input class="storeview" name="store_4" value="" disabled="disabled"></td>
+                        </tr>
+                        <tr>
+                            <td colspan=2><input class="storeview" name="store_5" value="" disabled="disabled"></td>
+                        </tr>
+                        <tr>
+                            <td colspan=2><input class="storeview" name="store_6" value="" disabled="disabled"></td>
+                        </tr>
+                        <tr>
+                            <td colspan=2><input class="storeview" name="store_7" value="" disabled="disabled"></td>
+                        </tr>
+                        <tr>
+                            <td><p class="memory" >Memory:</p></td>
+                            <td><p class="memory" id="memory">7</p></td>
+                        </tr>
+                    </form>
+                </table>
             </div>
         </div>
         <div class="main">
